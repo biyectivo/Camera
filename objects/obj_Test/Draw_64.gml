@@ -1,0 +1,2 @@
+draw_text(10, 10, string("{0} {1}", Camera.follow_target == noone ? "" : object_get_name(Camera.follow_target.object_index), Camera.follow_target));
+draw_text(10, 30, string($"{Camera.move_smoothness}"));

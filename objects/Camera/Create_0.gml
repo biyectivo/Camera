@@ -1,13 +1,11 @@
+view_camera[self.index] = camera_create();
+
 self.display_aspect_ratio = display_get_width()/display_get_height();
 self.aspect_ratio = self.use_display_aspect_ratio && os_browser == browser_not_a_browser ? self.display_aspect_ratio : self.custom_aspect_ratio;
 
-#macro	CAMERA	view_camera[0]
-#macro	CAM_X	camera_get_view_x(CAMERA)
-#macro	CAM_Y	camera_get_view_y(CAMERA)
-#macro	CAM_W	camera_get_view_width(CAMERA)
-#macro	CAM_H	camera_get_view_height(CAMERA)
-#macro	GUI_W	display_get_gui_width()
-#macro	GUI_H	display_get_gui_height()
+self.__manual_x = 0;
+self.__manual_y = 0;
+
 
 if (self.adjust_width) {
 	self.resolution_height = self.ideal_height;
@@ -25,6 +23,17 @@ else {
 
 if (self.resolution_width % 2 != 0)		self.resolution_width--;
 if (self.resolution_height % 2 != 0)	self.resolution_height--;
+
+self.move = function(_x = self.__manual_x, _y = self.__manual_y) {
+	if (self.follow_target == noone || !instance_exists(self.follow_target)) {
+		self.__manual_x = self.constraint_to_room ? clamp(_x, 0, room_width) : _x;
+		self.__manual_y = self.constraint_to_room ? clamp(_y, 0, room_height) : _y;
+	}	
+}
+
+self.get_position = function() {
+	return {x: camera_get_view_x(view_camera[self.index]), y: camera_get_view_y(view_camera[self.index])};
+}
 
 window_set_size(self.resolution_width*self.window_scale, self.resolution_height*self.window_scale);
 surface_resize(application_surface, self.resolution_width*self.window_scale, self.resolution_height*self.window_scale);

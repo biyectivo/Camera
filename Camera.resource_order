@@ -1,11 +1,10 @@
 {
-  "FolderOrderSettings": [
+  "FolderOrderSettings":[
     {"name":"Test","order":1,"path":"folders/Test.yy",},
   ],
-  "ResourceOrderSettings": [
+  "ResourceOrderSettings":[
+    {"name":"room_Test","order":3,"path":"rooms/room_Test/room_Test.yy",},
     {"name":"spr_Bound","order":2,"path":"sprites/spr_Bound/spr_Bound.yy",},
     {"name":"spr_Test","order":1,"path":"sprites/spr_Test/spr_Test.yy",},
-    {"name":"Camera","order":1,"path":"objects/Camera/Camera.yy",},
-    {"name":"room_Test","order":3,"path":"rooms/room_Test/room_Test.yy",},
   ],
 }

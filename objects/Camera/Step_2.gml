@@ -56,3 +56,5 @@ if (self.custom_gui_width > 0 && self.custom_gui_height > 0) {
 else {
 	display_set_gui_size(self.resolution_width*self.gui_scale, self.resolution_height*self.gui_scale);
 }
+
+if (self.center_window) window_center();
